@@ -45,10 +45,12 @@ public class MemberServlet extends HttpServlet {
 			vo.setName(_name);
 			vo.setEmail(_email);
 			dao.addMember(vo);
-		} /*
-			 * else if (command != null && command.equals("delMember")) { String id =
-			 * request.getParameter("id"); // dao.delMember(id); }
-			 */
+		}else if (command != null && command.equals("delMember")) 
+		{ 
+			String id =request.getParameter("id"); 
+			dao.delMember(id); 
+		}
+			 
 		
 		
 		
@@ -65,7 +67,7 @@ public class MemberServlet extends HttpServlet {
 			String email = memberVO.getEmail();
 			Date joinDate = memberVO.getJoinDate();
 			out.print("<tr><td>"+id + "</td><td>"+pwd +"</td><td>"+ name + "</td><td>" + email + "</td><td>" +
-					   joinDate + "</td><td>"+ "<a href='member3?command=delMember&id="+id+"'> 삭제 </a></td></tr>");
+					   joinDate + "</td><td>"+ "<a href='member3?command=delMember&id=" + id + "'> 삭제 </a></td></tr>");
 		}
 		out.print("</table></body></html>");		
 		out.print("<a href='memberForm.html'> 새 회원 등록하기 </a>");		
